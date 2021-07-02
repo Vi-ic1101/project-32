@@ -6,7 +6,7 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var backgroundImg;
 
-var bg="sunrise.png"
+var bg="sunrise1.png"
 
 
 function preload() {
