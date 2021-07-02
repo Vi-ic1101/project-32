@@ -8,7 +8,6 @@ var backgroundImg;
 
 var bg="sunrise1.png"
 
-
 function preload() {
     // create getBackgroundImg( ) here
     backgroundImg=loadImage(bg)
