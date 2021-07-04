@@ -7,7 +7,7 @@ var engine, world;
 var backgroundImg;
 
 var bg="sunrise1.png"
-
+var hour
 function preload() {
     // create getBackgroundImg( ) here
     backgroundImg=loadImage(bg)
@@ -31,7 +31,13 @@ function draw(){
     Engine.update(engine);
 
     // write code to display time in correct format here
-
+    if(hour>=12 ){
+        text("Time :"+  hour%12 + "PM",50,100)
+    }else if(hour == 0){
+        text("Time :12 AM",50,100)
+    }else {
+          text("Time :"+  hour%12 + "PM",50,100)
+    }
 
 }
 
@@ -45,35 +51,36 @@ async function getBackgroundImg(){
     // write code slice the datetime
 
     var datetime=responseJSON.datetime;
-    var hours=datetime.slice(11,20)
+     hour=datetime.slice(11,13)
     // add conditions to change the background images from sunrise to sunset
-    if(hours>=0500 && hour<=0600){
+    if(hour>=05 && hour<=06){
      bg="sunrise1.png"
-    }else if(hours>=0600 && hour<=0800){
+    }else if(hour>=06 && hour<=08){
     bg="sunrise2.png"
-    }else if(hours>=0800 && hour<=1000){
+    }else if(hour>=08 && hour<=10){
     bg="sunrise3.png"
-    }else if(hours>=1000 && hour<=1200){
+    }else if(hour>=11 && hour<=13){
     bg="sunrise4.png"
-    }else if(hours>=1200 && hour<=1400){
+    }else if(hour>=13 && hour<=15){
     bg="sunrise5.png"
-    }else if(hours>=1400 && hour<=1600){
+    }else if(hour>=15 && hour<=17){
     bg="sunrise6.png"
-    }else if(hours>=1600 && hour<=1700){
+    }else if(hour>=17 && hour<=18){
     bg="sunset7.png"
-    }else if(hours>=1700 && hour<=1800){
-    bg="sunset8.png"
-    }else if(hours>=1800 && hour<=1900){
+    }else if(hour>=18 && hour<=20){
     bg="sunset10.png"
-    }else if(hours>=1900 && hour<=2200){
+    }else if(hour>=20 && hour<=23){
+    bg="sunset9.png"
+    }else if(hour>=23 && hour<=0){
     bg="sunset11.png"
-    }else {
+    }else{
     bg="sunset12.png"
     }
 
+// change to default 
 
     //load the image in backgroundImg variable here
     backgroundImg=loadImage(bg)
-    console.log(hours)
+    console.log(hour)
 
 }
